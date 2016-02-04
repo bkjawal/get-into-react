@@ -15,6 +15,6 @@ class Counter extends React.Component{
 
 
 reactDOM.render(
-  <Counter initialValue="10"></Counter>,
+  <Counter initialValue="0"></Counter>,
   document.getElementById('app')
 );

@@ -4,17 +4,17 @@ import reactDOM from 'react-dom';
 
 //let Welcome = ()=> <div>Welcome to react world  with es6 arrow function:-)</div>;
 
-class Welcome extends React.Component{
+class Counter extends React.Component{
    constructor(){
        super();
    }
    render(){
-       return (<div>First static component</div>);
+       return (<div>Counter's value  {this.props.initialValue}</div>);
    }
 }
 
 
 reactDOM.render(
-  <Welcome></Welcome>,
+  <Counter initialValue="10"></Counter>,
   document.getElementById('app')
 );

@@ -1,8 +1,14 @@
-var React = require('react');
-var reactDOM = require('react-dom');
+import React from 'react';
+import reactDOM from 'react-dom';
+
+
+let Welcome = ()=> <div>Welcome to react world  with es6 arrow function:-)</div>
 
 reactDOM.render(
-  <div>Welcome to react world :-)</div>,
+  <Welcome></Welcome>,
   document.getElementById('app')
 );
+
+
+
 

@@ -1,20 +1,10 @@
 import React from 'react';
 import reactDOM from 'react-dom';
+import Pager from './pager.js';
 
 
-//let Welcome = ()=> <div>Welcome to react world  with es6 arrow function:-)</div>;
-
-class Counter extends React.Component{
-   constructor(){
-       super();
-   }
-   render(){
-       return (<div>Counter's value  {this.props.initialValue}</div>);
-   }
-}
-
-
+//rendrning app
 reactDOM.render(
-  <Counter initialValue="0"></Counter>,
+  <Pager initialValue="0"></Pager>,
   document.getElementById('app')
 );

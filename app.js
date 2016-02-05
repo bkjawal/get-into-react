@@ -5,6 +5,6 @@ import Pager from './ui/pager.js';
 
 //rendrning app
 reactDOM.render(
-  <Pager initialValue={0}></Pager>,
+  <Pager initialValue={10}></Pager>,
   document.getElementById('app')
 );

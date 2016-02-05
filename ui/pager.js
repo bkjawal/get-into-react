@@ -8,14 +8,16 @@ export default class Pager extends React.Component{
         };
     }   
     increment(){
-        this.setState({currentPage:  this.state.currentPage + 1});
+        this.setPageNumber(this.state.currentPage + 1);        
     }
     decrement(){
-        this.setState({currentPage:this.state.currentPage-1});
+        this.setPageNumber(this.state.currentPage - 1); 
     }
     onChange(e){
-        
-        this.setState({currentPage: parseInt(e.target.value)});
+        this.setPageNumber(e.target.value);       
+    }
+    setPageNumber(n){
+        this.setState({currentPage: parseInt(n)});
     }
     render(){
         return (
@@ -29,7 +31,8 @@ export default class Pager extends React.Component{
 }
 
 Pager.propTypes = {
-    initialValue:React.PropTypes.number
+    initialValue:React.PropTypes.number,
+    onPageChanged: React.PropTypes.func
 };
 
 Pager.defaultProps = {

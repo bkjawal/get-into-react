@@ -10,7 +10,8 @@ var config = {
         mainFile: './app.js',
         bundleFileName:'bundleApp.js',
         dest: './dest',
-        root:'./'
+        root:'./',
+        uiFolder:'./ui/**/*.*'
     }
 };
 
@@ -40,5 +41,5 @@ gulp.task('bundle',function(){
 gulp.task('default',['bundle']);
 
 gulp.task('watch',function(){
-    gulp.watch(config.path.mainFile,['bundle']);
+    gulp.watch(config.path.uiFolder,['bundle']);
 })

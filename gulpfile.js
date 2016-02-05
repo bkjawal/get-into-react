@@ -7,9 +7,9 @@ var chalk = require('chalk');
 
 var config = {
     path:{
-        mainFile: './index.js',
+        mainFile: './app.js',
         bundleFileName:'bundleApp.js',
-        dest: './',
+        dest: './dest',
         root:'./'
     }
 };

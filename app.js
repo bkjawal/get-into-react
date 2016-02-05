@@ -1,6 +1,6 @@
 import React from 'react';
 import reactDOM from 'react-dom';
-import Pager from './pager.js';
+import Pager from './ui/pager.js';
 
 
 //rendrning app

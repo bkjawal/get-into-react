@@ -18,6 +18,8 @@ export default class Pager extends React.Component{
     }
     setPageNumber(n){
         this.setState({currentPage: parseInt(n)});
+        if(this.props.onPageChanged)
+            this.props.onPageChanged(n);
     }
     render(){
         return (

@@ -13,9 +13,8 @@ class Pager extends React.Component{
     }   
      
     setPageNumber(n){
-        //validation
         n = parseInt(n);
-        if(n < this.props.min || n > this.props.max)
+        if(n < this.props.min || n > this.props.max) 
             return;
             
         this.setState({currentPage: n});
@@ -28,9 +27,9 @@ class Pager extends React.Component{
         return (
             <div>
                 <button onClick={e =>this.setPageNumber(this.props.min)}>First</button>
-                <button onClick={e => this.setPageNumber(this.state.currentPage - 1)}>Decrement</button>            
+                <button onClick={e => this.setPageNumber(this.state.currentPage - 1)}>Down</button>            
                 <input type="text" onChange={e => this.setPageNumber(e.target.value)}  value={this.state.currentPage}  />
-                <button onClick={e => this.setPageNumber(this.state.currentPage + 1)}>Increment</button>
+                <button onClick={e => this.setPageNumber(this.state.currentPage + 1)}>Up</button>
                 <button onClick={e =>this.setPageNumber(this.props.max)}>Last</button>
             </div>
             );

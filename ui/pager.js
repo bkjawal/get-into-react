@@ -1,12 +1,15 @@
 import React from 'react';
 
-export default class Pager extends React.Component{
+class Pager extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             currentPage : props.initialValue
         };
-    }   
+    }
+    componentDidMount(){
+        console.log('Pager:componentDidMount');
+    }
     increment(){
         this.setPageNumber(this.state.currentPage + 1);        
     }
@@ -17,17 +20,19 @@ export default class Pager extends React.Component{
         this.setPageNumber(e.target.value);       
     }
     setPageNumber(n){
-        this.setState({currentPage: parseInt(n)});
+        n = parseInt(n);
+        this.setState({currentPage: n});
         if(this.props.onPageChanged)
             this.props.onPageChanged(n);
     }
     render(){
+         console.log('Pager: render...');
         return (
-            <div>
+            <span>
                 <button onClick={this.decrement.bind(this)}>Decrement</button>            
                 <input type="text" value={this.state.currentPage} onChange={this.onChange.bind(this)} />
                 <button onClick={this.increment.bind(this)}>Increment</button>
-            </div>
+            </span>
             );
     }
 }
@@ -40,4 +45,6 @@ Pager.propTypes = {
 Pager.defaultProps = {
     initialValue:0
 };
+
+export default Pager;
 

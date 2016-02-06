@@ -1,10 +1,10 @@
 import React from 'react';
 import reactDOM from 'react-dom';
-import Pager from './ui/pager.js';
+import PagerExtender from './ui/pagerExtender.js';
 
 
 //rendrning app
 reactDOM.render(
-  <Pager initialValue={10}></Pager>,
+  <PagerExtender initialValue={9}></PagerExtender>,
   document.getElementById('app')
 );

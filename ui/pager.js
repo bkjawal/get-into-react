@@ -3,8 +3,10 @@ import React from 'react';
 class Pager extends React.Component{
     constructor(props){
         super(props);
+        let n = this.props.current;
+        n = (this.props.min <= n && n <= this.props.max)?n:this.props.min;
         this.state = {
-            currentPage : props.initialValue            
+            currentPage : n            
         };        
     }
     
@@ -37,14 +39,14 @@ class Pager extends React.Component{
 }
 
 Pager.propTypes = {
-    initialValue:React.PropTypes.number,
+    current:React.PropTypes.number,
     min:React.PropTypes.number,
     max:React.PropTypes.number,
     onPageChanged: React.PropTypes.func
 };
 
 Pager.defaultProps = {
-    initialValue:0,
+    current:0,
     min:0,
     max:1000
 };

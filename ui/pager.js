@@ -1,13 +1,16 @@
 import React from 'react';
 
-class Pager extends React.Component{
+let Pager =  PagerUI => class Pager extends React.Component{
     constructor(props){
         super(props);
         let n = this.props.current;
         n = (this.props.min <= n && n <= this.props.max)?n:this.props.min;
         this.state = {
             currentPage : n            
-        };        
+        }; 
+        
+        this.setPageNumber = this.setPageNumber.bind(this);
+               
     }
     
     componentDidMount(){
@@ -27,13 +30,7 @@ class Pager extends React.Component{
     render(){
          console.log('Pager: render...');
         return (
-            <div>
-                <button onClick={e =>this.setPageNumber(this.props.min)}>First</button>
-                <button onClick={e => this.setPageNumber(this.state.currentPage - 1)}>Down</button>            
-                <input type="text" onChange={e => this.setPageNumber(e.target.value)}  value={this.state.currentPage}  />
-                <button onClick={e => this.setPageNumber(this.state.currentPage + 1)}>Up</button>
-                <button onClick={e =>this.setPageNumber(this.props.max)}>Last</button>
-            </div>
+           <PagerUI {...this.props} {...this.state} setPageNumber={this.setPageNumber}></PagerUI> 
             );
     }
 }
@@ -51,5 +48,16 @@ Pager.defaultProps = {
     max:1000
 };
 
-export default Pager;
+let  PagerUI = (props) => 
+   <div>  
+                <button onClick={e => props.setPageNumber(props.min)}>First</button>
+                <button onClick={e => props.setPageNumber(props.currentPage - 1)}>Down</button>            
+                <input type="text" onChange={e => props.setPageNumber(e.target.value)} value={props.currentPage}  />
+                <button onClick={e => props.setPageNumber(props.currentPage + 1)}>Up</button>
+                <button onClick={e =>props.setPageNumber(props.max)}>Last</button>
+   </div>
+   
+let PagerExtender = Pager(PagerUI);
+
+export default PagerExtender;
 

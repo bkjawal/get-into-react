@@ -3,8 +3,10 @@ import reactDOM from 'react-dom';
 import Pager from './ui/pager.js';
 
 
+let pagerObj = {min:1,max:25,current:10};
+
 //rendrning app
 reactDOM.render(
-  <Pager current={21} min={1} max={40}></Pager>,
+  <Pager {...pagerObj}></Pager>,
   document.getElementById('app')
 );

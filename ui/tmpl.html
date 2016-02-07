@@ -1,0 +1,28 @@
+
+<div>  
+    <button onClick={e =>this.setPageNumber(this.props.min)}>First</button>
+    <button onClick={e => this.setPageNumber(this.state.currentPage - 1)}>Down</button>            
+    <input type="text" onChange={e => this.setPageNumber(e.target.value)}  value={this.state.currentPage}  />
+    <button onClick={e => this.setPageNumber(this.state.currentPage + 1)}>Up</button>
+    <button onClick={e =>this.setPageNumber(this.props.max)}>Last</button>
+</div>
+
+// Table
+
+<table>
+    <thead> 
+        <th>
+            <td>H1</td>
+            <td>H2</td>
+        </th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>d1</td>
+            <td>d2</td>
+        </tr>
+    </tbody>    
+</table>
+
+
+    

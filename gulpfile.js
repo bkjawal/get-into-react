@@ -8,11 +8,13 @@ var plumber = require ('gulp-plumber');
 
 var config = {
     path:{
-        mainFile: './app.js',
+        mainFile: './todoapp.js',
+       // mainFile: './app.js',
         bundleFileName:'bundleApp.js',
         dest: './dest',
         root:'./',
-        uiFolder:'./ui/**/*.*'
+        uiFolder:'./ui/**/*.*',
+        model:'./m/**/*.*'
     }
 };
 
@@ -44,5 +46,5 @@ gulp.task('bundle',function(){
 gulp.task('default',['bundle']);
 
 gulp.task('watch',function(){
-    gulp.watch(config.path.uiFolder,['bundle']);
+    gulp.watch([config.path.uiFolder,config.path.model],['bundle']);
 })

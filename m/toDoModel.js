@@ -56,6 +56,15 @@
          this.inform();
      }
      
+      markUnCompleted(id){
+         this.todos = this.todos.map(function(todo){
+             if(id === todo.id)
+                todo.isCompleted = false;
+             return todo;
+         });
+         this.inform();
+     }
+     
      markCompletedAll(){
          this.todos = this.todos.map(function(todo){
              todo.isCompleted = true;

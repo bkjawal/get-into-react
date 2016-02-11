@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 
 export default class ToDoApp extends React.Component{
     constructor(props){
@@ -14,13 +15,19 @@ export default class ToDoApp extends React.Component{
     }
     componentWillUnmount(){
         this.unsubscribe(); 
-    }    
+    }
+    onApplyFilter(f){
+        this.setState({currentFilter:f});
+    }
+    hadnleRemoveCompleted(){
+        this.model.destroyCompleted();
+    }
     render(){
         return (
             <div>
             <ToDoForm onNewToDo={title => this.model.addTodo(title)} ></ToDoForm>
-            <ToDoList model={this.model}></ToDoList>
-            <ToDoFooter></ToDoFooter>
+            <ToDoList  filter={this.state.currentFilter} model={this.model}></ToDoList>
+            <ToDoFooter onApplyFilter={(f)=>this.onApplyFilter(f)} onRemoveCompleted={()=>this.hadnleRemoveCompleted()}></ToDoFooter>
             </div>
         );
     }
@@ -60,11 +67,22 @@ class ToDoList extends React.Component{
     handleToggle(id){
          this.props.model.toggle(id);
     }
+    applyFilter()
+    {
+        switch(this.props.filter){
+            case 'ACTIVE':
+                return this.props.model.getActive();
+           case 'COMPLETED':
+                return this.props.model.getCompleted();
+           default:
+                return this.props.model.getAll();
+        }
+    }
    
     render(){
         let todos = [];
         let m =  this.props.model;
-        m.getAll().forEach(function(todo){
+        this.applyFilter().forEach(function(todo){
             todos.push(
             <li key={todo.id}>
                 <ToDoItem todo={todo} 
@@ -95,10 +113,11 @@ class ToDoItem extends React.Component{
             this.props.onToggle(this.props.todo.id);
     }
     render(){
+        let cls = classnames({completedTask:this.props.todo.isCompleted});
         return(
             <div>
                 <input onChange={(e)=>this.handleChange(e)} type='checkbox' checked={this.props.todo.isCompleted} />
-                <label type='label'>{this.props.todo.title}</label>
+                <label type='label' className={cls} >{this.props.todo.title}</label>
                 <button onClick={()=> this.handleClose()}>X</button> 
             </div>
         );
@@ -106,16 +125,23 @@ class ToDoItem extends React.Component{
 }
 
 class ToDoFooter extends React.Component{
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
+    }
+    applyFilter(f){
+        this.props.onApplyFilter(f);
+    }
+    onRemoveCompleted(){
+        this.props.onRemoveCompleted();
     }
     render(){
         return(
             <div className="footer">
                 <ul>
-                    <li><button>All</button></li>
-                    <li><button>Active</button></li>
-                    <li><button>Commpleted</button></li>
+                    <li><button onClick={()=> this.applyFilter('ALL')}>All</button></li>
+                    <li><button onClick={()=> this.applyFilter('ACTIVE')}>Active</button></li>
+                    <li><button onClick={()=> this.applyFilter('COMPLETED')}>Commpleted</button></li>
+                    <li><button onClick={()=> this.onRemoveCompleted()} className="clearCompleted">Remove Completed</button></li>
                 </ul>
             </div>
         );

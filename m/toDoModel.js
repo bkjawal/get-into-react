@@ -44,6 +44,13 @@
          this.inform();
      }
      
+     destroyCompleted(){
+         this.todos = this.todos.filter(function(todo){
+             return !todo.isCompleted;
+         });
+         this.inform();
+     }
+     
      edit(id,title){
          this.todos = this.todos.map(function(todo){
              if(id === todo.id)

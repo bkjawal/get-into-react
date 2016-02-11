@@ -1,14 +1,24 @@
 #app{
     position: relative;   
-    background-color: yellowgreen;
+    background-color: rgb(245, 246, 242);
     min-width: 300px;
     max-width: 500px;
     margin: 5px auto;
     padding:5px;
+    font-size: 20px;
+    border:1px solid;
+    
+}
+
+input{
+    font-size: 20px;
+}
+button{
+    font-size: 18px;
 }
 .header{
     position: relative;
-    background-color: aqua;
+    background-color: rgb(245, 246, 242);
     margin: 2px auto;
     padding:2px;
 }
@@ -28,7 +38,7 @@
 }
 
 .detail{
-    background-color: beige;
+    background-color: rgb(245, 246, 242);
 }
 
 .detail label{
@@ -42,7 +52,7 @@
     width:20px;
     height:20px;
     margin: 5px;
-    top:0;
+    top:7px;
     bottom:0;   
     left:0;
 }
@@ -55,19 +65,37 @@
     margin: 2px;
 }
 
-.detail ul{
+ul{
     padding: 0;
+    margin: 10px 0;
 }
 .detail li{
     display: block;
 }
+.completedTask{
+    text-decoration: line-through;
+}
+
 .detail li div{
     position: relative;
     border-bottom: 1px solid gray;
 }
 .footer{
-    background-color: cadetblue;
+    background-color: rgb(245, 246, 242);
+}
+.footer ul{
+    padding: 0;
 }
 .footer li {
     display: inline;
+}
+
+.footer button{
+    padding:10px;
+    
+}
+
+.clearCompleted{
+    position: absolute;
+    right: 5px;
 }

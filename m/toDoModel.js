@@ -15,6 +15,12 @@
      
      subscribe(callback){
          this.subscribers.push(callback);
+         let unsubscribe = function(){
+             this.subscribers = this.subscribers.filter(function(cb){
+                 return cb !== callback;
+             })
+         }.bind(this)         
+         return unsubscribe;         
      }
      inform(){
          this.subscribers.forEach(function(fun){

@@ -5,6 +5,8 @@ import ToDoModel from './m/toDoModel';
 
 let toDoModel = new ToDoModel();
 
+window.ABC = toDoModel;
+
 
 reactDOM.render(
     <ToDoApp model={toDoModel}></ToDoApp> ,

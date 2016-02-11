@@ -1,0 +1,73 @@
+#app{
+    position: relative;   
+    background-color: yellowgreen;
+    min-width: 300px;
+    max-width: 500px;
+    margin: 5px auto;
+    padding:5px;
+}
+.header{
+    position: relative;
+    background-color: aqua;
+    margin: 2px auto;
+    padding:2px;
+}
+.header input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.header button{
+    position: absolute;
+    margin: 4px;
+    width:40px;
+    top:0;
+    bottom: 0;
+    right:0;
+}
+
+.detail{
+    background-color: beige;
+}
+
+.detail label{
+    padding: 10px 10px 10px 50px;
+    display: block;
+    
+}
+
+.detail input[type=checkbox]{
+    position: absolute;
+    width:20px;
+    height:20px;
+    margin: 5px;
+    top:0;
+    bottom:0;   
+    left:0;
+}
+.detail button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    margin: 2px;
+}
+
+.detail ul{
+    padding: 0;
+}
+.detail li{
+    display: block;
+}
+.detail li div{
+    position: relative;
+    border-bottom: 1px solid gray;
+}
+.footer{
+    background-color: cadetblue;
+}
+.footer li {
+    display: inline;
+}

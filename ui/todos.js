@@ -6,9 +6,15 @@ export default class ToDoApp extends React.Component{
         this.state = {
             currentFilter:'ALL'         
         }
-        this.model = this.props.model; 
-        this.model.subscribe(()=> this.forceUpdate());      
+        this.model = this.props.model;
+        console.log('In constructor... ');      
     }
+    componentWillMount(){
+        this.unsubscribe = this.model.subscribe(()=> this.forceUpdate());
+    }
+    componentWillUnmount(){
+        this.unsubscribe(); 
+    }    
     render(){
         return (
             <div>
@@ -38,7 +44,7 @@ class ToDoForm extends React.Component{
     }
     render(){
         return (
-            <div>
+            <div className="header">
                 <input  onKeyDown={(e) => this.handleKeyDown(e)} ref="title" type='text' placeholder='what you want to do?'/>
                 <button onClick={() => this.handleSubmit()}>Go</button>
             </div>
@@ -68,8 +74,7 @@ class ToDoList extends React.Component{
             </li>);
         }.bind(this));
         return(
-            <div>
-                <span>{todos.length}</span>
+            <div className="detail">                
                 <ul>
                     {todos }
                 </ul>
@@ -80,7 +85,7 @@ class ToDoList extends React.Component{
 
 class ToDoItem extends React.Component{
     constructor(props){
-        super(props);
+        super(props); 
     }
     handleClose(){
         this.props.onDelete(this.props.todo.id);
@@ -92,8 +97,8 @@ class ToDoItem extends React.Component{
     render(){
         return(
             <div>
-                <input onChange={(e)=>this.handleChange(e)} type='checkbox' />
-                <input type='label' value={this.props.todo.title}/>
+                <input onChange={(e)=>this.handleChange(e)} type='checkbox' checked={this.props.todo.isCompleted} />
+                <label type='label'>{this.props.todo.title}</label>
                 <button onClick={()=> this.handleClose()}>X</button> 
             </div>
         );
@@ -106,7 +111,7 @@ class ToDoFooter extends React.Component{
     }
     render(){
         return(
-            <div>
+            <div className="footer">
                 <ul>
                     <li><button>All</button></li>
                     <li><button>Active</button></li>
